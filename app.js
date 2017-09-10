@@ -6,16 +6,16 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
-////
 const mongo=require('mongodb').MongoClient;
 
 let database;
-app.set('port',process.env.PORT||3000);
-app.use(express.static('public'));
+
+
 const url="mongodb://pyotr:shaurma@ds133582.mlab.com:33582/scally";
 /*var submit=require('./routes/submit');
 var success=require('./routes/success');*/
 var app = express();
+app.use(express.static('public'));
 /* "scripts": {
    "start": "node ./bin/www"
  },*/
@@ -32,7 +32,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
-
 app.post('/submit',function(req,response){
     let userMail=req.body.email;
     let email={mail:userMail};
