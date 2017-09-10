@@ -70,7 +70,7 @@ app.post('/submit', function (req, res) {
         mail: userMail
     }).save(function (err, doc) {
         if (!err) {
-            res.send(SUCCESS);
+            res.send("SUCCESS");
         }
     });
 });
