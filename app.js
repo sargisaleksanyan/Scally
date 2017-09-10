@@ -6,12 +6,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
-const mongo=require('mongodb').MongoClient;
+const mongo = require('mongodb').MongoClient;
 
 let database;
 
 
-const url="mongodb://pyotr:shaurma@ds133582.mlab.com:33582/scally";
+const url = "mongodb://pyotr:shaurma@ds133582.mlab.com:33582/scally";
 /*var submit=require('./routes/submit');
 var success=require('./routes/success');*/
 var app = express();
@@ -27,45 +27,46 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
-app.post('/submit',function(req,response){
-    let userMail=req.body.email;
-    let email={mail:userMail};
-    database.collection("user").insertOne({mail:userMail},function (err,res) {
-        if(err){
-            var error= err.statusCode;
-            var status=err.status;
+app.post('/submit', function (req, response) {
+    let userMail = req.body.email;
+    let email = {mail: userMail};
+    console.log("---------------------Submit----------------------------")
+    database.collection("user").insertOne({mail: userMail}, function (err, res) {
+        if (err) {
+            var error = err.statusCode;
+            var status = err.status;
             console.log(err);
         }
-        else{
+        else {
             response.redirect('/success');
         }
     })
 });
-app.get('/success',function (req,res) {
-    res.sendFile(path.join(__dirname,'./public',"thankyou.html"));
+app.get('/success', function (req, res) {
+    res.sendFile(path.join(__dirname, './public', "thankyou.html"));
 })
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
+app.use(function (req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
 
-  next(err);
+    next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+app.use(function (err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
 });
 
 module.exports = app;
