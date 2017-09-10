@@ -4,7 +4,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
+var app = express();
+
 const app=express();
+
 const mongo=require('mongodb').MongoClient;
 const bodyParser=require('body-parser');
 let database;
@@ -14,44 +18,17 @@ const url="mongodb://pyotr:shaurma@ds133582.mlab.com:33582/scally"
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
 
-app.get('/',function(req,res){
-    res.sendFile(path.join(__dirname,'./public',"index.html"));
-});
-app.post('/submit',function(req,response){
-    let userMail=req.body.email;
-    let email={mail:userMail};
-    database.collection("user").insertOne({mail:userMail},function (err,res) {
-        if(err){
-            var error= err.statusCode;
-            var status=err.status;
-            console.log(err);
-        }
-        else{
-            response.redirect('/success');
-        }
-    })
-});
-app.get('/success',function (req,res) {
-    res.sendFile(path.join(__dirname,'./public',"thankyou.html"));
-})
-mongo.connect(url,function (err,db) {
-    if(!err){
-        database=db;
-    }
-})
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-/*
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', index);
+app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -70,6 +47,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-*/
 
 module.exports = app;
