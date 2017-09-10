@@ -35,14 +35,17 @@ app.use('/users', users);
 app.post('/submit', function (req, response) {
     let userMail = req.body.email;
     let email = {mail: userMail};
-    console.log("---------------------Submit----------------------------")
+    console.log("---------------------Submit----------------------------");
+
     database.collection("user").insertOne({mail: userMail}, function (err, res) {
         if (err) {
             var error = err.statusCode;
             var status = err.status;
-            console.log(err);
+            console.log("error-------------------"+error+"-------------------");
+            console.log("status "+status+"---------------------");
         }
         else {
+            console.log("success -----");
             response.redirect('/success');
         }
     })
