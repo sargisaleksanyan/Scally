@@ -78,6 +78,11 @@ header {
   background-repeat: no-repeat !important;
   min-height: 400px;
 }
+.my-iframe{
+    width:700px ;
+    height: 400px;
+    margin: 0 auto;
+}
 .row{
   width: 90%;
   margin: auto;
@@ -121,7 +126,7 @@ header {
 }
 #content_section_2 img{
   text-align: left;
-   width:100%;
+  width:100%;
   height:100%;
 }
 #content_section_2 .imagewrapper{
@@ -255,7 +260,6 @@ header {
   font-style: normal;
 }
 #keep_in_touch .submitter{
-
  margin: auto;
  width:60%;
 }
@@ -263,6 +267,8 @@ header {
    height: 56px;
    box-sizing: border-box;
    width:100%;
+   padding-left: 10px;
+   font-size: 18px;
 }
 
 #keep_in_touch .submitter input[type="button"] {
@@ -500,11 +506,7 @@ section.success {
 #portfolio * {
   z-index: 2;
 }
-@media (min-width: 767px) {
-  #portfolio .portfolio-item {
-    margin: 0 0 30px;
-  }
-}
+
 .floating-label-form-group {
   position: relative;
   margin-bottom: 0;
@@ -872,6 +874,9 @@ img{
   min-width: 100%;
   height: 56px;
   box-sizing: border-box;
+  padding-left: 10px;
+  font-size: 18px;
+
 
 }
 #submit_withname input[type="button"]{
@@ -897,4 +902,40 @@ img{
   cursor: pointer;
 }
 */
+/* media min-width:767px */
+@media screen and (max-width: 768px) {
+  #portfolio .portfolio-item {
+    margin: 0 0 30px;
+  }
+  #keep_in_touch .content h4 {
+    font-size: 30px;
+    padding-top: 0;
 
+  }
+  #keep_in_touch .submitter input {
+    margin-top: 5px;
+  }
+  #submit_withname input {
+    margin-top: 5px;
+  }
+
+  }
+@media screen and (max-width: 360px){
+
+  .btn-social {
+    height: 30px;
+    width:30px;
+    font-size: 12px;
+    line-height: 25px;
+  }
+  #keep_in_touch .submitter input[type="button"] {
+    font-size: 16px;
+  }
+  section h2 {
+    font-size: 28px;
+  }
+   .navbar-brand  {
+    padding: 0 ;
+  }
+
+  }
