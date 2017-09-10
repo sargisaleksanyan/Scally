@@ -4,17 +4,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var index = require('./routes/index');
+var users = require('./routes/users');
 var app = express();
 
-const app=express();
-
-const mongo=require('mongodb').MongoClient;
-const bodyParser=require('body-parser');
-let database;
-app.set('port',process.env.PORT||3000);
-app.use(express.static('public'));
-const url="mongodb://pyotr:shaurma@ds133582.mlab.com:33582/scally"
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
