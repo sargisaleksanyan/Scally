@@ -6,8 +6,15 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
-var submit=require('./routes/submit');
-var success=require('./routes/success');
+////
+const mongo=require('mongodb').MongoClient;
+
+let database;
+app.set('port',process.env.PORT||3000);
+app.use(express.static('public'));
+const url="mongodb://pyotr:shaurma@ds133582.mlab.com:33582/scally";
+/*var submit=require('./routes/submit');
+var success=require('./routes/success');*/
 var app = express();
 /* "scripts": {
    "start": "node ./bin/www"
@@ -23,12 +30,26 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', index);
 app.use('/users', users);
-app.use('/submit', submit);
-app.use('/success', success);
 
+app.post('/submit',function(req,response){
+    let userMail=req.body.email;
+    let email={mail:userMail};
+    database.collection("user").insertOne({mail:userMail},function (err,res) {
+        if(err){
+            var error= err.statusCode;
+            var status=err.status;
+            console.log(err);
+        }
+        else{
+            response.redirect('/success');
+        }
+    })
+});
+app.get('/success',function (req,res) {
+    res.sendFile(path.join(__dirname,'./public',"thankyou.html"));
+})
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
