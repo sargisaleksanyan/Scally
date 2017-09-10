@@ -17,7 +17,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.get('/',function(req,res){
-   res.sendFile(path.join(__dirname,'./public',"index.html"));
+  // res.sendFile(path.join(__dirname,'./public',"index.html"));
+    res.render('index', { title: 'Express' });
 });
 app.post('/submit',function(req,response){
     let userMail=req.body.email;
