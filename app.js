@@ -9,7 +9,9 @@ var users = require('./routes/users');
 var submit=require('./routes/submit');
 var success=require('./routes/success');
 var app = express();
-
+/* "scripts": {
+   "start": "node ./bin/www"
+ },*/
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
