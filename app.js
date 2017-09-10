@@ -63,7 +63,7 @@ app.use('/users', users);
     })
 });*/
 var userDb=mongoose.model('user',Schema);
-app.post('/submit', function (req, response) {
+app.post('/submit', function (req, res) {
     let userMail = req.body.email;
     let email = {mail: userMail};
     new userDb({
