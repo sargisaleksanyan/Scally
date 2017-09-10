@@ -14,7 +14,19 @@ let database;
 const url = "mongodb://pyotr:shaurma@ds133582.mlab.com:33582/scally";
 /*var submit=require('./routes/submit');
 var success=require('./routes/success');*/
+var mongoose=require('mongoose');
+mongoose.connect(url);
+var db=mongoose.connection;
+db.on('error',console.error.bind(console,'connection error....'));
+db.once('open',function callback() {
+    console.log("Db opened");
+})
+var Schema=new mongoose.Schema({
+    id:String,
+    mail:String
+});
 var app = express();
+
 app.use(express.static('public'));
 /* "scripts": {
    "start": "node ./bin/www"
@@ -32,7 +44,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
-app.post('/submit', function (req, response) {
+/*app.post('/submit', function (req, response) {
     let userMail = req.body.email;
     let email = {mail: userMail};
     console.log("---------------------Submit----------------------------");
@@ -49,6 +61,18 @@ app.post('/submit', function (req, response) {
             response.redirect('/success');
         }
     })
+});*/
+var userDb=mongoose.model('user',Schema);
+app.post('/submit', function (req, response) {
+    let userMail = req.body.email;
+    let email = {mail: userMail};
+    new userDb({
+        mail: userMail
+    }).save(function (err, doc) {
+        if (!err) {
+            res.send(SUCCESS);
+        }
+    });
 });
 app.get('/success', function (req, res) {
     res.sendFile(path.join(__dirname, './public', "thankyou.html"));
