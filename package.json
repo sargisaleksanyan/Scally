@@ -11,8 +11,9 @@
     "debug": "*",
     "express": "*",
     "jade": "*",
+    "mongodb": "^2.2.31",
     "morgan": "*",
-    "request"    : "*",
+    "request": "*",
     "serve-favicon": "*"
   }
 }
