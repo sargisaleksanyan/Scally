@@ -3,7 +3,7 @@ var router = express.Router();
 const mongo=require('mongodb').MongoClient;
 let database;
 const url="mongodb://pyotr:shaurma@ds133582.mlab.com:33582/scally";
-router.post('/submit',function(req,response){
+router.post('/submit',function(req,response,next){
     let userMail=req.body.email;
     let email={mail:userMail};
     database.collection("user").insertOne({mail:userMail},function (err,res) {
