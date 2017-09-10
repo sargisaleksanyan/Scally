@@ -14,7 +14,7 @@ $("#subscribe").click(function () {
     if(isValidMail(email)) {
       //  $(id).val('');
         $.ajax({
-            url: "/submit",
+            url: "http://scally.co/submit",
             type: "POST",
             data:{
                   email: email,
