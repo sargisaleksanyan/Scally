@@ -233,7 +233,7 @@ header {
   margin-right: auto;
   margin-left: auto;
 }
-#keep_in_touch{
+.keep_in_touch{
   margin-top: 0px !important;
   margin-bottom: 0px !important;
   padding-top: 80px !important;
@@ -241,7 +241,7 @@ header {
   background-color: #132440 !important;
 }
 
-#keep_in_touch .content{
+.keep_in_touch .content{
   font-size: 48px;
   color: #ffffff;
   line-height: 56px;
@@ -250,7 +250,7 @@ header {
   font-weight: 700;
   font-style: normal;
 }
-#keep_in_touch .content h4 {
+.keep_in_touch .content h4 {
   font-size: 40px;
   color: #ffffff;
   line-height: 56px;
@@ -259,11 +259,11 @@ header {
   font-weight: 700;
   font-style: normal;
 }
-#keep_in_touch .submitter{
+.keep_in_touch .submitter{
  margin: auto;
  width:60%;
 }
-#keep_in_touch .submitter input{
+.keep_in_touch .submitter input{
    height: 56px;
    box-sizing: border-box;
    width:100%;
@@ -271,15 +271,25 @@ header {
    font-size: 18px;
 }
 
-#keep_in_touch .submitter input[type="button"] {
+.keep_in_touch .submitter input[type="button"] {
   font-size: 22px;
   font-weight: 700;
   color: #1e2d3c;
 }
-#keep_in_touch .subscribe{
+.keep_in_touch #subscribe{
    border:0px;
 }
 #subscribe2 {
+  color: white;
+  background-color: #18BC9C;
+  border-color: #18BC9C;
+  font-weight: 700;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+}
+#subscribe {
   color: white;
   background-color: #18BC9C;
   border-color: #18BC9C;
@@ -928,7 +938,7 @@ img{
     font-size: 12px;
     line-height: 25px;
   }
-  #keep_in_touch .submitter input[type="button"] {
+  .keep_in_touch .submitter input[type="button"] {
     font-size: 16px;
   }
   section h2 {

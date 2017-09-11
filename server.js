@@ -1,6 +1,7 @@
-/**
+/*
+/!**
  * Created by sargis on 6/19/17.
- */
+ *!/
 const express=require('express');
 const app=express();
 const path=require('path');
@@ -42,4 +43,4 @@ mongo.connect(url,function (err,db) {
         database=db;
     }
 })
-app.listen(3000);
+app.listen(3000);*/
