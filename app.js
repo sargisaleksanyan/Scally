@@ -10,17 +10,12 @@ const mongo = require('mongodb').MongoClient;
 let database;
 var mysql      = require('mysql');
 var msConnection = mysql.createConnection({
-    host     : 'kickstarter.csleyuda1sih.us-east-1.rds.amazonaws.com:3306',
+    host     : 'kickstarter.csleyuda1sih.us-east-1.rds.amazonaws.com',
     user     : 'Sargis',
     password : 'hovik2011',
     database : 'Scally'
 });
-msConnection.connect((err)=>{
-    if(err) {
-        console.log(err);
-        console.log("Error while connecting to database");
-    }
-});
+
 const url = "mongodb://pyotr:shaurma@ds133582.mlab.com:33582/scally";
 const mongoose=require('mongoose');
 mongoose.connect(url);
@@ -67,6 +62,12 @@ app.post('/submit', function (req, res) {
     });
 });
 function insertMysql(mail) {
+    msConnection.connect((err)=>{
+        if(err) {
+            console.log(err);
+            console.log("Error while connecting to database");
+        }
+    });
     var sql = "INSERT INTO users (mail) VALUES ('"+mail+"')";
     if(msConnection!=undefined) {
         msConnection.query(sql, function (err, result) {
