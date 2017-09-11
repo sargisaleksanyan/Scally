@@ -22,6 +22,9 @@ $("#subscribe").click(function () {
                  }
                })
             }
+            else{
+          alert("Please provide valid email");
+    }
          }
 
     function isValidMail(mail) {

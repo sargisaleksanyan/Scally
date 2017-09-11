@@ -67,14 +67,18 @@ function insertMysql(mail) {
             console.log(err);
             console.log("Error while connecting to database");
         }
+        else{
+            var sql = "INSERT INTO users (mail) VALUES ('"+mail+"')";
+            if(msConnection!=undefined) {
+                msConnection.query(sql, function (err, result) {
+                    if (!err) {
+                        console.log("1 record inserted");
+                    }
+                });
+            }
+        }
     });
-    var sql = "INSERT INTO users (mail) VALUES ('"+mail+"')";
-    if(msConnection!=undefined) {
-        msConnection.query(sql, function (err, result) {
-            if (err) throw err;
-            console.log("1 record inserted");
-        });
-    }
+
 }
 app.get('/success', function (req, res) {
     res.sendFile(path.join(__dirname, './public', "thankyou.html"));
