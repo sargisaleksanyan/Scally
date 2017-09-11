@@ -11,8 +11,9 @@
     "debug": "*",
     "express": "*",
     "jade": "*",
+    "mysql": "*",
     "mongodb": "*",
-    "mongoose":"*",
+    "mongoose": "*",
     "morgan": "*",
     "request": "*",
     "serve-favicon": "*"

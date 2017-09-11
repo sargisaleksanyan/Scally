@@ -299,26 +299,7 @@ header {
   line-height: 1.3333333;
   border-radius: 6px;
 }
-  /*   border-right: 10px solid ;
-  ///////
-      font-size: 22px;
-      font-weight: 700;
-      color: #1e2d3c;
-  ///////
-     max-width: 100%;*/
 
-/*#keep_in_touch .submitter>.row{
-   width:100% !important;
-
-  !*   border-right: 10px solid ;
-
-     max-width: 100%;*!
-}*/
-/*
-#inputform input[type="text"]{
-  margin:0 auto;
-  max-width: 100%;
-}*/
 header .container {
   padding-top: 200px;
   padding-bottom: 200px;
